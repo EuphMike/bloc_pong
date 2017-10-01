@@ -1,6 +1,12 @@
 var canvas = document.getElementById('pong');
 var context = canvas.getContext('2d');
 
+var playerPoint = 0;
+var computerPoint = 0;
+
+computerScore = document.getElementById('computer');
+playerScore = document.getElementById('player');
+
 function Player(x, y) {
   this.x = x;
   this.y = y;
@@ -64,11 +70,21 @@ function Ball(x, y) {
       this.speed = this.speed + random(0.01, 0.02);
     };
 
-    if (this.x < -20 || this.x > 900) {
+    if (this.x < -20) {
       this.x = 440;
       this.y = 290;
       this.speed = 0;
+      playerPoint += 1;
+      playerScore.innerHTML = playerPoint;
     };
+
+    if (this.x > 900) {
+      this.x = 440;
+      this.y = 290;
+      this.speed = 0;
+      computerPoint += 1;
+      computerScore.innerHTML = computerPoint;
+    }
 
     if (this.x <= computer.x + computer.width && this.y <= computer.y + computer.height && this.y + this.height >= computer.y) {
       this.direction = Math.PI - this.direction;
