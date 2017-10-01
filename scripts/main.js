@@ -4,6 +4,10 @@ var context = canvas.getContext('2d');
 var playerPoint = 0;
 var computerPoint = 0;
 
+score = document.getElementById('score');
+winner = document.getElementById('winner');
+loser = document.getElementById('loser');
+
 computerScore = document.getElementById('computer');
 playerScore = document.getElementById('player');
 
@@ -76,6 +80,11 @@ function Ball(x, y) {
       this.speed = 0;
       playerPoint += 1;
       playerScore.innerHTML = playerPoint;
+      if (playerPoint >= 11) {
+      score.style.display = "none";
+      winner.style.display = "inline";
+      alert ("You had the high ground! Refresh to try again.");
+      };
     };
 
     if (this.x > 900) {
@@ -84,6 +93,11 @@ function Ball(x, y) {
       this.speed = 0;
       computerPoint += 1;
       computerScore.innerHTML = computerPoint;
+      if (computerPoint >= 11) {
+        score.style.display = "none";
+        loser.style.display = "inline";
+        alert ("It's Treason Then....Refresh to try again");
+      };
     }
 
     if (this.x <= computer.x + computer.width && this.y <= computer.y + computer.height && this.y + this.height >= computer.y) {
