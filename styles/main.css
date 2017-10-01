@@ -86,3 +86,11 @@ p {
   margin: 0;
   line-height: 0;
 }
+
+#winner{
+  display: none;
+}
+
+#loser{
+  display: none;
+}
